@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: DiscoveryService
+  boot:
+    admin:
+      context-path: /admin
+    
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+     defaultZone: http://140.238.162.84:8008/discovery/eureka/
+  server:
+   responseCacheUpdateIntervalMs: 30000
+   minThreadsForPeerReplication: 5
+   maxThreadsForPeerReplication: 20
+   maxTimeForReplication: 30000
+   minThreadsForStatusReplication: 1
+   maxThreadsForStatusReplication: 1
+   numberOfReplicationRetries: 5
+   peerEurekaStatusRefreshTimeIntervalMs: 30000
+   waitTimeInMsWhenSyncEmpty: 30000
+   peerNodeConnectTimeoutMs: 60000
+   peerNodeReadTimeoutMs: 60000
+   peerNodeTotalConnections: 1000
+   peerNodeTotalConnectionsPerHost: 500
+  instance:
+   leaseRenewalIntervalInSeconds: 30
+   lease-expiration-duration-in-seconds: 90
+   instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} 
+      
